@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/openjdk:11-jdk
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -27,13 +27,6 @@ jobs:
         name: pull master
         command: git pull master
       - run: gradle build
-      - run:
-      name: Assemble JAR
-      command: |
-        # Skip this for other nodes
-        if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
-          ./gradlew assemble
-        fi
 
       # Download and cache dependencies
       - restore_cache:
@@ -74,4 +67,3 @@ workflows:
     - test:
         requires:
           - build
-
