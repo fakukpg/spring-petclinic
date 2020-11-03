@@ -78,6 +78,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Analysis with Sonarqube 
-        run: ./gradlew sonarqube -Dsonar.host.url=http://localhost:9000
+        run: ./gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000
+
 
 
